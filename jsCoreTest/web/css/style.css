@@ -1,0 +1,16 @@
+.hTitle {
+	position: relative;
+	background-color: red;
+	height: 30px;
+	width: 100%;
+}
+
+.btnDiv{
+	position: relative;
+	margin-top: 5px;
+}
+
+.imgDiv {
+	position: relative;
+	margin-top: 5px;
+}
