@@ -13,6 +13,7 @@
 
 - (void)callOC:(NSString *)imgPath;
 - (void)callJsBack:(NSString *)typeStr;
+- (NSMutableDictionary *)getOCImg;
 
 @end
 

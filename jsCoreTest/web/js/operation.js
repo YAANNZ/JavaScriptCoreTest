@@ -20,3 +20,13 @@ var revoke = function (){
     var orgimgEle = document.getElementById("orgh5Img");
     imgEle.src = orgimgEle.src;
 }
+
+var getImg = function (){
+    var imgEle = document.getElementById("h5Img");
+    var resultDict = jsCoreTest.getOCImg();
+    if (resultDict['flag'] == '1') {
+        imgEle.src = resultDict['imgPath'];
+    } else {
+        alert('获取失败');
+    }
+}

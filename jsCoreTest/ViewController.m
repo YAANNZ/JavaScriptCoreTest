@@ -108,7 +108,22 @@
     self.imgView.image = [UIImage imageNamed:@"original"];
 }
 
-
+- (NSMutableDictionary *)getOCImg
+{
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"original" ofType:@"png"];
+    NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+    if (imgPath.length)
+    {
+        resultDict[@"flag"] = @"1";
+    }
+    else
+    {
+        resultDict[@"flag"] = @"0";
+    }
+    resultDict[@"imgPath"] = imgPath;
+    
+    return resultDict;
+}
 
 
 - (void)didReceiveMemoryWarning {
