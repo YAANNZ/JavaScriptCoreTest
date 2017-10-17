@@ -3,8 +3,12 @@ var callOC = function (){
     jsCoreTest.callOC(imgEle.src);
 }
 
-var callOCBack = function (){
-    alert('成功');
+var callOCBack = function (typeStr){
+    if (typeStr == 'success') {
+        alert('成功');
+    } else {
+        alert('失败');
+    }
 }
 
 var callJs = function(imgPath)
@@ -21,7 +25,8 @@ var revoke = function (){
     imgEle.src = orgimgEle.src;
 }
 
-var getImg = function (){
+// 仿phonegap交互
+var getOCImg = function (){
     var imgEle = document.getElementById("h5Img");
     var resultDict = jsCoreTest.getOCImg();
     if (resultDict['flag'] == '1') {
@@ -29,4 +34,17 @@ var getImg = function (){
     } else {
         alert('获取失败');
     }
+}
+
+var getJSImg = function (){
+     var imgEle = document.getElementById("orgh5Img");
+     var resultDict = new Array();
+     if (imgEle.src) {
+         resultDict['flag'] = '1';
+     } else {
+         resultDict['flag'] = '0';
+     }
+     resultDict['imgPath'] = imgEle.src;
+
+     return resultDict;
 }

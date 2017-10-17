@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     // webView
@@ -54,6 +54,14 @@
     [revokeBtn setTitle:@"撤销" forState:UIControlStateNormal];
     [revokeBtn addTarget:self action:@selector(revokeBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:revokeBtn];
+    
+    UIButton *getBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [getBtn setBackgroundColor:[UIColor brownColor]];
+    getBtn.frame = CGRectMake(230, 55, 100, 30);
+    getBtn.layer.cornerRadius = 5;
+    [getBtn setTitle:@"获取H5图片" forState:UIControlStateNormal];
+    [getBtn addTarget:self action:@selector(getBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:getBtn];
     
     UIImageView *orgimgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"original"]];
     orgimgView.frame = CGRectMake(10, 90, 80, 80);
@@ -108,6 +116,8 @@
     self.imgView.image = [UIImage imageNamed:@"original"];
 }
 
+
+// 仿phonegap交互
 - (NSMutableDictionary *)getOCImg
 {
     NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"original" ofType:@"png"];
@@ -123,6 +133,20 @@
     resultDict[@"imgPath"] = imgPath;
     
     return resultDict;
+}
+
+- (void)getBtnClicked
+{
+    JSValue *callJs = self.jsContext[@"getJSImg"];
+    NSDictionary *dict = [[callJs callWithArguments:nil] toDictionary];
+    if ([dict[@"flag"] integerValue] == 1)
+    {
+        self.imgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:dict[@"imgPath"]]]];
+    }
+    else
+    {
+        NSLog(@"获取失败");
+    }
 }
 
 
