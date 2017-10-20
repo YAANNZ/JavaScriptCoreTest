@@ -31,6 +31,8 @@
     [self.view addSubview:self.webView];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"web"]]]];
+//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1:8080/website/index.html"]]];
+    
     
     // img Option
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, self.view.bounds.size.width-20, 30)];
